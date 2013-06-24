@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- import related JS classes-->
+    <script src="mouse.js"></script>
+    <script src="keyboard.js"></script>
+    <script src="button.js"></script>    
+    <script src="checkBox.js"></script>
+    <script src="textBox.js"></script>
+    <script src="drawClass.js"></script>
+    <!-- set canvas-->
+    <canvas id="myCanvas" width="800" height="600" tabindex='1'></canvas>
+    <!-- JS for UI demo-->
+    <script type="text/javascript">
+//declare the globale variables for the main program
+        var canvas = null;
+        var context = null;
+        var mouse1 = null;
+        var keyboard1 = null;
+        var drawer = null;
+        var button1 = null;
+        var button2 = null;
+        var checkBox1 = null;
+        var checkBox2 = null;
+        var textBoxClass1 = null;
+        var textBoxClass2 = null;
+
+//declare the functions for the main program
+        //UI event functions for 2 buttons, 2 checkBoxes, and 2 textBoxes
+
+        //function to initialize the globale variables
+        function init() {
+            canvas = document.getElementById('myCanvas');
+            context = canvas.getContext('2d');
+            //initialize a mouse class, register mouse listener
+            mouse1 = new mouseClass();
+            canvas.addEventListener('mousedown', mouse1.mouseEvent.bind(null, mouse1.onMouseDown), false);
+            canvas.addEventListener('mouseup', mouse1.mouseEvent.bind(null, mouse1.onMouseUp), false);
+            canvas.addEventListener('mousemove', mouse1.mouseEvent.bind(null, mouse1.onMouseMove), false);
+            //initialize a keyboard class, register keyboard listenter
+            keyboard1 = new keyboardClass();
+            canvas.addEventListener('keydown', keyboard1.keyboardEvent.bind(null, keyboard1.onKeyDown), false);
+            canvas.addEventListener('keyup', keyboard1.keyboardEvent.bind(null, keyboard1.onKeyUp), false);
+            canvas.addEventListener('keypress', keyboard1.keyboardEvent.bind(null, keyboard1.onKeyPress), false);
+            //initialize a draw tool for basic shape drawing, it is actually a static class
+            drawer = new drawClass(context);
+            //initialize two buttons, a default one and a specified one
+            button1 = new buttonClass(drawer, mouse1, keyboard1,
+                11, 50, 160, 40,
+                null, null, null, null, null,
+                "Filled Button",
+                null, null, null,
+                null, null, null, null, null,
+                null, null,
+                null,
+                null);
+            button2 = new buttonClass(drawer, mouse1, keyboard1,
+                280, 50, 300, 40,
+                onButton2Down, onButton2Holding, onButton2Up, null, null,
+                "Not Filled Button",
+                20, "rgb(0, 0, 0)", false,
+                "rgb(0, 200, 200)", false, 15, 6, "rgb(100, 0, 200)",
+                0, 5,
+                null, null);
+
+            checkBox1 = new checkBoxClass(drawer, mouse1, keyboard1,
+                11, 150, 40, 40,
+                null, null, null, null, null,
+                null, null, null, null, null,
+                null, null,
+                null);
+            checkBox2 = new checkBoxClass(drawer, mouse1, keyboard1,
+                280, 150, 60, 40,
+                onCheckbox2MouseDown, onCheckbox2MouseHold, onCheckbox2MouseUp, onCheckbox2MouseOver, onCheckbox2MouseOut,
+                "rgb(10, 10, 100)", 15, 5, "rgb(0, 200, 0)", "rgb(150, 0, 150)",
+                null, null,
+                null);
+            textBox1 = new textBoxClass(drawer, mouse1, keyboard1,
+                11, 250, 250, 30,
+                null, null, null, null, null,
+                null, null,
+                null, null, null, null,
+                null, null, null);
+            textBox2 = new textBoxClass(drawer, mouse1, keyboard1,
+                280, 250, 300, 80,
+                null, null, null, null, null,
+                "rgb(0, 200, 100)", 2,
+                "un-editable textBox", 30, "rgb(30, 30, 30)", false,
+                "rgb(200, 200, 10)", false, null);
+        }
+        //UI components drawer
+        function DrawGUI() {
+            button1.Draw();
+            button2.Draw();
+            checkBox1.Draw();
+            checkBox2.Draw();
+            textBox1.Draw();
+            textBox2.Draw();
+        }
+        //system Updater
+        function Update() {
+            drawer.ClearRect(0, 0, canvas.width, canvas.height);
+            DrawGUI();
+            keyboard1.reset();
+            mouse1.reset();
+        }
+
+ //main program starts here       
+        init();
+        setInterval(Update, 20);
+    </script>
+</body>
+</html>
