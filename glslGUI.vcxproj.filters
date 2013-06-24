@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ingredients">
+      <UniqueIdentifier>{a07f1f7b-14ba-4ad8-8bd9-e1be85590113}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{8da5302c-fbe0-4f5c-a501-0fd1b9af5721}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="InputDevice">
+      <UniqueIdentifier>{b03aca73-1738-4fb7-adb4-d194a7259b59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\drawers">
+      <UniqueIdentifier>{d668179b-a506-42a9-bf39-33003b945565}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\drawers\shapeDrawers">
+      <UniqueIdentifier>{0629f156-5e1e-4508-9567-7b1fb14ecf03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\drawers\textDrawers">
+      <UniqueIdentifier>{d7a06be9-8a1f-44be-8220-382718ee3e80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\shapes">
+      <UniqueIdentifier>{51910bd4-9f77-4902-95a2-0d342590506c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\shaderSouceCodes">
+      <UniqueIdentifier>{7c204f6d-b90b-4ea0-a93b-221e516eea6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ingredients\bmpreader.h">
+      <Filter>ingredients</Filter>
+    </ClInclude>
+    <ClInclude Include="ingredients\cookbookogl.h">
+      <Filter>ingredients</Filter>
+    </ClInclude>
+    <ClInclude Include="ingredients\defines.h">
+      <Filter>ingredients</Filter>
+    </ClInclude>
+    <ClInclude Include="ingredients\drawable.h">
+      <Filter>ingredients</Filter>
+    </ClInclude>
+    <ClInclude Include="ingredients\gl_core_4_3.h">
+      <Filter>ingredients</Filter>
+    </ClInclude>
+    <ClInclude Include="ingredients\glslprogram.h">
+      <Filter>ingredients</Filter>
+    </ClInclude>
+    <ClInclude Include="ingredients\glutils.h">
+      <Filter>ingredients</Filter>
+    </ClInclude>
+    <ClInclude Include="ingredients\scene.h">
+      <Filter>ingredients</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="guiBaseClass.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="keyboard.h">
+      <Filter>InputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="mouse.h">
+      <Filter>InputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="vboplane.h">
+      <Filter>GUI\shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="textdrawer.h">
+      <Filter>GUI\drawers\textDrawers</Filter>
+    </ClInclude>
+    <ClInclude Include="shapeDrawer.h">
+      <Filter>GUI\drawers\shapeDrawers</Filter>
+    </ClInclude>
+    <ClInclude Include="singleTexShapeDrawer.h">
+      <Filter>GUI\drawers\shapeDrawers</Filter>
+    </ClInclude>
+    <ClInclude Include="multiTexShapeDrawer.h">
+      <Filter>GUI\drawers\shapeDrawers</Filter>
+    </ClInclude>
+    <ClInclude Include="globalSetting.h" />
+    <ClInclude Include="GUIManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GUIManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="ingredients\bmpreader.cpp">
+      <Filter>ingredients</Filter>
+    </ClCompile>
+    <ClCompile Include="ingredients\drawable.cpp">
+      <Filter>ingredients</Filter>
+    </ClCompile>
+    <ClCompile Include="ingredients\gl_core_4_3.cpp">
+      <Filter>ingredients</Filter>
+    </ClCompile>
+    <ClCompile Include="ingredients\glslprogram.cpp">
+      <Filter>ingredients</Filter>
+    </ClCompile>
+    <ClCompile Include="ingredients\glutils.cpp">
+      <Filter>ingredients</Filter>
+    </ClCompile>
+    <ClCompile Include="keyboard.cpp">
+      <Filter>InputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="mouse.cpp">
+      <Filter>InputDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="guiBaseClass.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="vboplane.cpp">
+      <Filter>GUI\shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="textdrawer.cpp">
+      <Filter>GUI\drawers\textDrawers</Filter>
+    </ClCompile>
+    <ClCompile Include="shapeDrawer.cpp">
+      <Filter>GUI\drawers\shapeDrawers</Filter>
+    </ClCompile>
+    <ClCompile Include="singleTexShapeDrawer.cpp">
+      <Filter>GUI\drawers\shapeDrawers</Filter>
+    </ClCompile>
+    <ClCompile Include="multiTexShapeDrawer.cpp">
+      <Filter>GUI\drawers\shapeDrawers</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="globalSetting.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="shader\textShader.fs">
+      <Filter>GUI\shaderSouceCodes</Filter>
+    </None>
+    <None Include="shader\textShader.vs">
+      <Filter>GUI\shaderSouceCodes</Filter>
+    </None>
+    <None Include="shader\multiTextureShader.fs">
+      <Filter>GUI\shaderSouceCodes</Filter>
+    </None>
+    <None Include="shader\multiTextureShader.vs">
+      <Filter>GUI\shaderSouceCodes</Filter>
+    </None>
+    <None Include="shader\singleTextureShader.fs">
+      <Filter>GUI\shaderSouceCodes</Filter>
+    </None>
+    <None Include="shader\singleTextureShader.vs">
+      <Filter>GUI\shaderSouceCodes</Filter>
+    </None>
+  </ItemGroup>
+</Project>
