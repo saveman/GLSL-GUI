@@ -15,9 +15,9 @@ GUIManager::GUIManager()
 	textProg = new GLSLProgram("shader/textShader");
 
 	button0=new Button(multiTextureProg, mouseObj, keyboardObj, 
-		-0.6, 0.5, 0.4f, 0.1f,
+		-0.6, 0.5, 0.6f, 0.1f,
 		NULL,NULL,NULL,NULL,NULL,
-		"RGBA button", 18, 
+		"RGBA button", 12, 
 		vec4(0.5, 0.4, 0,4), vec4(0, 1, 0,1),
 		"./media/texture/brick1.bmp", "./media/texture/moss.bmp",
 		0.01,0.02,
@@ -25,9 +25,9 @@ GUIManager::GUIManager()
 	button0->setFontOffset(vec3(-0.25,-0.15,0));
 
 	button1=new Button(singleTextureProg, mouseObj, keyboardObj, 
-		-0.55, -0.0, 0.5f, 0.1f,
+		-0.55, -0.0, 0.7f, 0.1f,
 		NULL,NULL,NULL,NULL,NULL,
-		"Single-Texuture button", 18, 
+		"Single-Texuture button", 12, 
 		vec4(0, 1, 0,1), vec4(0, 1, 0,1),
 		"./media/texture/brick1.bmp", "./media/texture/moss.bmp",
 		-0.01,0.02,
@@ -35,9 +35,9 @@ GUIManager::GUIManager()
 	button1->setFontOffset(vec3(-0.38,-0.15,0));
 
 	button2=new Button(multiTextureProg, mouseObj, keyboardObj, 
-		-0.45, -0.5, 0.7, 0.1f,
+		-0.45, -0.5, 0.9, 0.1f,
 		NULL,NULL,NULL,NULL,NULL,
-		"Double-Texuture-Blended button", 18, 
+		"Double-Texuture-Blended button", 12, 
 		vec4(1,1, 1,1), vec4(0, 1, 0,1),
 		"./media/texture/brick1.bmp", "./media/texture/moss.bmp",
 		0.01,-0.02,
