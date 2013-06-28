@@ -1,11 +1,9 @@
 function keyboardClass() {
     var keyboard = {};
-    //keyboard public member variables
     keyboard.char = null; //ASCII code
     keyboard.keyStatus = -1;//up 1, down 0
     keyboard.controlKey = -1; //up 1, down 0
     keyboard.shiftKey = -1; //up 1, down 0
-    //keyboard public member methods
     keyboard.setPropertes = function (controlKey, shiftKey, char, keyStatus) {
         keyboard.controlKey = controlKey;
         keyboard.shiftKey = shiftKey;

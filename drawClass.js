@@ -1,7 +1,5 @@
 function drawClass(t_context) {
-    //private member variable
     var content = t_context;
-    //public member methods
     this.DrawRect = function (x, y, width, height, filled, color) {
         if (filled) {
             content.fillStyle = color;

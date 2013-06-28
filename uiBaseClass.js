@@ -2,16 +2,15 @@
 function uiBaseClass(t_drawer,t_mouse, t_keyboard,
     t_x, t_y, t_width, t_height,
     t_onMouseDown, t_onMouseHold, t_onMouseUp, t_onMouseOver, t_onMouseOut) {
-    // the following public uiBaseClass member variables are vital to any UI component, so they can not be null.
-    this.drawer = (t_drawer != null) ? t_drawer : alert("t_drawer is null");
-    this.mouse = (t_mouse != null) ? t_mouse : alert("t_mouse is null");
-    this.keyboard = (t_keyboard != null) ? t_keyboard : alert("t_keyboard is null");
-    this.x = (t_x != null) ? t_x : alert("t_x is null");
-    this.y = (t_y != null) ? t_y : alert("t_y is null");
-    this.width = (t_width != null) ? t_width : alert("t_width is null");
-    this.height = (t_height != null) ? t_height : alert("t_height is null");
+    this.drawer = t_drawer;
+    this.mouse = t_mouse;
+    this.keyboard = t_keyboard;
 
-    // uiBaseClass private member methods for mouse events, are assigned with defualt debug method if not assigned by an uiBaseClass instance 
+    this.x = t_x;
+    this.y = t_y;
+    this.width = t_width;
+    this.height = t_height;
+
     this.defaultEventReporter = function (t_eventName) {//used for debug to report UI events
         console.log(t_eventName);
     }
@@ -21,11 +20,10 @@ function uiBaseClass(t_drawer,t_mouse, t_keyboard,
     var onMouseOver = (t_onMouseOver != null) ? t_onMouseOver : this.defaultEventReporter;
     var onMouseOut = (t_onMouseOut != null) ? t_onMouseOut : this.defaultEventReporter;
 
-    //uiBaseClass private members variables for mouse movement status on the corresponding UI component instance: key up/down, cross over/out, within/out of the UI component. 
     var downUpMouseStatus = -1;
     var crossOverOutMouseStatus = -1;
     var inOutMouseStatus = -1;
-    // get mouse status through priviledge uiBaseClass member methods
+
     this.getDownUpMouseStatus=function()
     {
         return downUpMouseStatus;
@@ -38,7 +36,6 @@ function uiBaseClass(t_drawer,t_mouse, t_keyboard,
     {
         return inOutMouseStatus;
     }
-    // Update UI component instance apperance by this priviledge member method
     this.updateUI = function () {
         if (this.mouse.x < this.x || this.mouse.x > this.x + this.width || this.mouse.y < this.y || this.mouse.y > this.y + this.height) {
             downUpMouseStatus = -1;

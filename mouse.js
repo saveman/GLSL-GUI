@@ -1,10 +1,8 @@
 function mouseClass() {
     var mouse = {};
-    //mouse public member variables
     mouse.x = -1;
     mouse.y = -1;
     mouse.indicatorUpDown = -1; //up 1, down 0
-    //mouse public member methods
     mouse.setPos = function (t_x, t_y) { mouse.x = t_x; mouse.y = t_y; };
     mouse.setIndicatorUpDown = function (t_updown) { mouse.indicatorUpDown = t_updown; };
     mouse.mouseEvent = function (handler, ev) {
