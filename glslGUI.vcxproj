@@ -66,19 +66,27 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)$(Platform)$(Configuration)</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetExt>.exe</TargetExt>
+    <TargetName>$(ProjectName)$(Platform)$(Configuration)</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>E:\OpenGLES\incude;.\ingredients</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\incude;.\ingredients</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>E:\OpenGLES\lib\64</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glew32s.lib;GLFW.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\lib\32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>glut32.lib;glew32s.lib;GLFW.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -143,6 +151,7 @@
     <ClInclude Include="shapeDrawer.h" />
     <ClInclude Include="singleTexShapeDrawer.h" />
     <ClInclude Include="vboplane.h" />
+    <ClInclude Include="dynVertexTexShapeDrawer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="button.cpp" />
@@ -162,6 +171,7 @@
     <ClCompile Include="shapeDrawer.cpp" />
     <ClCompile Include="singleTexShapeDrawer.cpp" />
     <ClCompile Include="vboplane.cpp" />
+    <ClCompile Include="dynVertexTexShapeDrawer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\multiTextureShader.fs" />
@@ -170,6 +180,8 @@
     <None Include="shader\singleTextureShader.vs" />
     <None Include="shader\textShader.fs" />
     <None Include="shader\textShader.vs" />
+    <None Include="shader\dynVertexTexShapeDrawer.fs" />
+    <None Include="shader\dynVertexTexShapeDrawer.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

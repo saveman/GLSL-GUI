@@ -1,3 +1,5 @@
+#include "globalSetting.h"
+
 #include "mouse.h"
 #include <GL/glfw.h>
 #include <stdio.h>
@@ -17,16 +19,25 @@ Mouse::Mouse(int& t_screenWidth, int& t_screenHeight)
 Mouse::~Mouse()
 {
 }
-void Mouse::updateScreenCoordinate()
+void Mouse::updateScreenCoordinate(bool pixelCoodinate)
 {
-	screenX=(float)x/((float)screenWidth)*2-1;
-	screenY=-(float)y/((float)screenHeight)*2+1;
+	if(pixelCoodinate)
+	{
+		screenX=x;
+	    screenY=WIN_HEIGHT-y;
+	}
+	else
+	{
+		screenX=(float)x/((float)screenWidth)*2-1;
+		screenY=-(float)y/((float)screenHeight)*2+1;
+	}
+
 }
 void Mouse::setPos (int t_x, int t_y) 
 { 
 	x = t_x; 
 	y = t_y; 
-	updateScreenCoordinate();
+	//updateScreenCoordinate();
 }
 void Mouse::setIndicatorUpDown(int t_updown) 
 { 
@@ -40,7 +51,7 @@ void Mouse::updateMouseStatus()
 	else if (glfwGetMouseButton(GLFW_MOUSE_BUTTON_1)==0)
 		onMouseUp(x, y) ;
 
-	updateScreenCoordinate();
+	updateScreenCoordinate(true);
 	//printf("xpos %d  ypos %d \n", x, y);
 	//printf("xpos %f  ypos %f \n", screenX, screenY);
 	//printf("MouseButton %d \n", indicatorUpDown); 

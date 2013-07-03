@@ -30,20 +30,19 @@ void SingleTexShapeDrawer::initScene()
 	// Load texture file
 	const char * texName = backgroundTextureFile;
 	GLuint w, h;
-	glActiveTexture(GL_TEXTURE0);
+	glActiveTexture(GL_TEXTURE2);
 	GLuint tid = BMPReader::loadTex(texName, w, h);
 
-	getGLSLProgram().setUniform("Tex1", 0);
+	getGLSLProgram().setUniform("Tex1", 2);
 }
 
 void SingleTexShapeDrawer::render(vec3 translation, float rotation)
 {
 	getGLSLProgram().use();
 	mat4  model = mat4(1.0f);
-	model *= glm::translate(translation);
+    model =model* glm::translate(translation)*glm::rotate(-0.0f, vec3(1.0f,0.0f,0.0f));
 	model *= glm::rotate(rotation, vec3(0.0f,0.0f,1.0f));
 	getGLSLProgram().setUniform("MVP", model);
-
 	getGLSLProgram().setUniform("attachTexture", getTexStatus());
     getGLSLProgram().setUniform("Light.Position", getLightInfo().Position );
 	getGLSLProgram().setUniform("Material.Kd", getMaterialInfo().Kd);

@@ -3,5 +3,6 @@
 
 extern int WIN_WIDTH;
 extern int WIN_HEIGHT;
+extern float TIME;
 
 #endif // GLOBALSETTING_H

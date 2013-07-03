@@ -22,10 +22,10 @@ protected:
 	GLSLProgram* prog;
 	Mouse* mouse;
 	Keyboard* keyboard;
-	float x;
-	float y;
-	float width;
-	float height;
+	int x;
+	int y;
+	int width;
+	int height;
 	int (*onMouseDown)(string event);
 	int (*onMouseHold)(string event);
 	int (*onMouseUp)(string event);
@@ -39,14 +39,21 @@ private:
 
 public:
 	GuiBaseClass(GLSLProgram* t_prog, Mouse* t_mouse, Keyboard* t_keyboard,
-		float t_x, float t_y, float t_width, float t_height,
+		int t_x, int t_y, int t_width, int t_height,
 		int (*t_onMouseDown)(string event) , int (*t_onMouseHold)(string event),
 		int (*t_onMouseUp)(string event),int (*t_onMouseOver)(string event),int (*t_onMouseOut)(string event)
 		);
 	virtual ~GuiBaseClass(); //prog, mouse, keyboard are supposed to be deleted in the class where intiated them, rather than in this desctructor
 
 	void GuiBaseClass::updateUI() ;
-
+	inline GLSLProgram* getGLSLProgram()
+	{
+		return prog;
+	}
+	inline ShapeDrawer* getShapeDrawer()
+	{
+		return drawer;
+	}
 	inline int getDownUpMouseStatus()
 	{
 		return downUpMouseStatus;

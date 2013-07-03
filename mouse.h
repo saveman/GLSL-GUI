@@ -24,6 +24,6 @@ public:
     void reset ();
 
 private:
-	void updateScreenCoordinate();
+	void updateScreenCoordinate(bool pixelCoodinate);
 };
 #endif // MOUSE_H

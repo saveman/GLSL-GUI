@@ -13,8 +13,7 @@ private:
     int faces;
 
 public:
-    VBOPlane(float, float, int, int, vec4 color);
-
+	VBOPlane(float xsize, float zsize, int xdivs, int zdivs);
     void render() const;
 };
 

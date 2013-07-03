@@ -9,10 +9,6 @@
 #include <glm/gtx/transform2.hpp>
 using glm::vec3;
 
-
-#include "singleTexShapeDrawer.h"
-#include "multiTexShapeDrawer.h"
-
 class Button : public GuiBaseClass
 {
 private:
@@ -23,7 +19,7 @@ private:
 
 	vec4 textColor;
 	vec4 buttonColor;
-	
+
 	const char * backgroundTextureFile;
 	const char * upperTextureFile;
 
@@ -31,11 +27,11 @@ private:
 	float pressDownOffset_y;
 
 	int (*onMouseOn)(string event) ;
-	
+
 	int drawMode;
 
-	float x0;
-	float y0;
+	int x0;
+	int y0;
 
 	vec4 renderTextColor;
 	vec4 renderButtonColor;
@@ -44,22 +40,30 @@ private:
 	vec3 fontOffset;
 
 public:
-	~Button();
+	
 	Button(GLSLProgram* t_prog, Mouse* t_mouse, Keyboard* t_keyboard,
-		float t_x, float t_y, float t_width, float t_height,
+		int t_x, int t_y, int t_width, int t_height,
 		int (*t_onMouseDown)(string event) , int (*t_onMouseHold)(string event), 
 		int (*t_onMouseUp)(string event),int (*t_onMouseOver)(string event),int (*t_onMouseOut)(string event),
 		const char* t_buttonText, int t_fontSize, 
-		vec4& t_textColor,   vec4& t_buttonColor,
+		vec4 t_textColor,   vec4 t_buttonColor,
 		const char * t_backgroundTextureFile, const char * t_upperTextureFile,
 		float t_pressDownOffset_x, float t_pressDownOffset_y,
 		int (*t_onMouseOn)(string event) ,  int t_drawMode);
-
+	
+	~Button();
+	inline void  setRotation(float t_rotation)
+	{
+		rotation=t_rotation;
+	}
 	inline void  setFontOffset(vec3 t_fontOffset)
 	{
 		fontOffset=t_fontOffset;
 	}
-
+	inline void Button::setRenderColor (vec4& t_renderTextColor, vec4& t_renderButtonColor, vec4& t_renderFillColor) {
+		renderTextColor = t_renderTextColor;
+		renderButtonColor = t_renderButtonColor;
+	}
 	inline int  getFontSize()
 	{
 		return fontSize;
@@ -90,13 +94,16 @@ public:
 	{
 		return renderButtonColor;
 	}
+	inline string Button::getButtonText (){
+		return buttonText;
+	}
 
-	void setRenderColor (vec4& t_renderTextColor, vec4& t_renderButtonColor, vec4& t_renderFillColor);
-	string getButtonText ();
-	void drawButton();
-	void updateButton();
 	void drawing ();
 	void drawing (vec3& pos, float rot, vec3 & fontOffset);
+
+private:
+	void drawButton();
+	void updateButton();
 };
 
 #endif // BUTTON_H
