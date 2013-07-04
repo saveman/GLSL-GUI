@@ -13,6 +13,7 @@ private:
 	float time;
 	
 	vector<GuiBaseClass*> guiComponentList;
+	GLSLProgram* allInOneTextureProg;
 	GLSLProgram* waveTextureProg;
 	GLSLProgram* singleTextureProg;
 	GLSLProgram* multiTextureProg;

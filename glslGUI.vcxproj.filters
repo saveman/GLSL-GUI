@@ -89,6 +89,9 @@
     <ClInclude Include="dynVertexTexShapeDrawer.h">
       <Filter>GUI\drawers\shapeDrawers</Filter>
     </ClInclude>
+    <ClInclude Include="allInOneShapeDrawer.h">
+      <Filter>GUI\drawers\shapeDrawers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GUIManager.cpp">
@@ -141,6 +144,9 @@
     <ClCompile Include="dynVertexTexShapeDrawer.cpp">
       <Filter>GUI\drawers\shapeDrawers</Filter>
     </ClCompile>
+    <ClCompile Include="allInOneShapeDrawer.cpp">
+      <Filter>GUI\drawers\shapeDrawers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\textShader.fs">
@@ -165,6 +171,12 @@
       <Filter>GUI\shaderSouceCodes</Filter>
     </None>
     <None Include="shader\dynVertexTexShapeDrawer.fs">
+      <Filter>GUI\shaderSouceCodes</Filter>
+    </None>
+    <None Include="shader\allInOneTextureShader.fs">
+      <Filter>GUI\shaderSouceCodes</Filter>
+    </None>
+    <None Include="shader\allInOneTextureShader.vs">
       <Filter>GUI\shaderSouceCodes</Filter>
     </None>
   </ItemGroup>

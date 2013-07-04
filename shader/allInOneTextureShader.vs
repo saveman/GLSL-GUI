@@ -1,0 +1,46 @@
+#version 430
+
+#define DEFAULT 0
+#define FLAG 1
+#define SCREW 2
+
+layout (location = 0) in vec3 VertexPosition;
+layout (location = 1) in vec3 VertexNormal;
+layout (location = 2) in vec2 VertexTexCoord;
+layout (location = 3) in vec3 VertexColor;
+
+out vec3 Position;
+out vec3 Normal;
+out vec2 TexCoord;
+out vec3 Color;
+
+uniform float Time;
+uniform float Freq = 2.5;
+uniform float Velocity = 2.5;
+uniform float Amp = 0.2;
+
+uniform mat4 MVP;
+
+uniform int mode=1;
+
+void main()
+{
+
+	vec3 pos = VertexPosition;
+	float u = Freq * pos.x - Velocity * Time;
+
+	if(mode==FLAG)
+		pos.z = Amp * sin( u );
+	else if(mode==SCREW)
+		pos.y = pos.y * sin( u );
+
+	Position = pos;
+
+	vec3 n = vec3(0.0);
+	n.zx = normalize(vec2(cos( u ), 1.0));
+	Normal = n;  
+
+	TexCoord = VertexTexCoord;
+
+	gl_Position = MVP * vec4(Position,1.0);
+}

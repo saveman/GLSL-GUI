@@ -12,10 +12,11 @@ GUIManager::GUIManager()
 	mouseObj=new Mouse(WIN_WIDTH,WIN_HEIGHT);
 	keyboardObj=new Keyboard();
 
+	allInOneTextureProg = new GLSLProgram("shader/allInOneTextureShader");
 	multiTextureProg = new GLSLProgram("shader/multiTextureShader");
 	waveTextureProg = new GLSLProgram("shader/dynVertexTexShapeDrawer");	
 	singleTextureProg = new GLSLProgram("shader/singleTextureShader");	
-	
+
 	textProg = new GLSLProgram("shader/textShader");
 
 	Button* button;
@@ -84,6 +85,54 @@ GUIManager::GUIManager()
 		10,-10,
 		NULL,2);
 	button->setFontOffset(vec3(100, 40,0));
+	guiComponentList.push_back(button);
+
+	button=new Button(allInOneTextureProg, mouseObj, keyboardObj, 
+		500, 50, 360, 225,
+		NULL,NULL,NULL,NULL,NULL,
+		"All-effect-in-one button 1", 18, 
+		vec4(0.9,0.9, 0.9,1), vec4(0, 0, 0,1),
+		"./media/texture/brick1.bmp", "./media/texture/moss.bmp",
+		10,-10,
+		NULL,20);
+	button->setFontOffset(vec3(80, 20, 0));	
+	light->Intensity=vec3(0.6f,0.6f,0.6f);light->Position = vec4(0.0f,-0.0f,5.0f,1.0);
+	button->getShapeDrawer()->setLightInfo(*light);
+	material->Ka=vec3(0.6f,0.6f,0.6f);material->Kd = vec3(0.3f, 0.3f, 0.3f);material->Ks=vec3(0.1f, 0.1f, 0.1f);material->Shininess=60.0f;
+	button->getShapeDrawer()->setMaterialInfo(*material);
+	guiComponentList.push_back(button);
+
+	button=new Button(allInOneTextureProg, mouseObj, keyboardObj, 
+		500, 350, 360, 225,
+		NULL,NULL,NULL,NULL,NULL,
+		"All-effect-in-one button2", 18, 
+		vec4(0.9,0.9, 0.9,1), vec4(0, 0, 0,1),
+		"./media/texture/brick1.bmp", "./media/texture/UCDavisFlag.bmp",
+		10,-10,
+		NULL,21);
+	button->setFontOffset(vec3(80, 20, 0));
+	button->setRotation(5.0);
+	light->Intensity=vec3(0.9f,0.9f,0.9f);light->Position = vec4(4.0f,0.0f, 0.0f,1.0);
+	button->getShapeDrawer()->setLightInfo(*light);
+	material->Ka=vec3(0.9f,0.9f,0.9f);material->Kd = vec3(0.3f, 0.3f, 0.3f);material->Ks=vec3(0.8f, 0.8f, 0.9f);material->Shininess=180.0f;
+	button->getShapeDrawer()->setMaterialInfo(*material);
+	button->getShapeDrawer()->setAmp(0.4f);
+	guiComponentList.push_back(button);
+
+	button=new Button(allInOneTextureProg, mouseObj, keyboardObj, 
+		500, 650, 360, 100,
+		NULL,NULL,NULL,NULL,NULL,
+		"All-effect-in-one button3", 18, 
+		vec4(0.9,0.9, 0.9,1), vec4(0, 0, 0,1),
+		"./media/texture/brick1.bmp", "./media/texture/ERITREA.bmp",
+		10,0,
+		NULL,22);
+	button->setFontOffset(vec3(80, 50, 0));
+	light->Intensity=vec3(0.9f,0.9f,0.9f);light->Position = vec4(4.0f,0.0f, 0.0f,1.0);
+	button->getShapeDrawer()->setLightInfo(*light);
+	material->Ka=vec3(0.8f,0.8f,0.9f);material->Kd = vec3(0.3f, 0.3f, 0.3f);material->Ks=vec3(0.4f, 0.4f, 0.9f);material->Shininess=10.0f;
+	button->getShapeDrawer()->setMaterialInfo(*material);
+	button->getShapeDrawer()->setVelocity(4.0f);
 	guiComponentList.push_back(button);
 
 	button=NULL;

@@ -32,7 +32,7 @@ void initializeGL()
 		exit(EXIT_FAILURE);
 	}
 
-	glClearColor(0.4f,0.4f,0.4f,0.0f); 
+	glClearColor(0.2f,0.2f,0.2f,0.0f); 
 
 	// Load a guiManager
 	guiManager = new GUIManager();

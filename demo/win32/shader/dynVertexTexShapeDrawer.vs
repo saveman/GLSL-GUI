@@ -7,7 +7,7 @@ layout (location = 0 ) in vec3 VertexPosition;
 layout (location = 1) in vec3 VertexNormal;
 layout (location = 2) in vec2 VertexTexCoord;
 
-out vec4 Position;
+out vec3 Position;
 out vec3 Normal;
 out vec2 TexCoord;
 
@@ -24,21 +24,21 @@ uniform int mode=0;
 
 void main()
 {
-    vec4 pos = vec4(VertexPosition,1.0);
-    float u = Freq * pos.x - Velocity * Time;
+	vec3 pos = VertexPosition;
+	float u = Freq * pos.x - Velocity * Time;
 
 	if(mode==FLAG)
-	    pos.z = Amp * sin( u );
+		pos.z = Amp * sin( u );
 	else if(mode==SCREW)
 		pos.y = pos.y * sin( u );
 
 	Position = pos;
 
-    vec3 n = vec3(0.0);
-    n.zx = normalize(vec2(cos( u ), 1.0));
+	vec3 n = vec3(0.0);
+	n.zx = normalize(vec2(cos( u ), 1.0));
 	Normal = n;  
-	
+
 	TexCoord = VertexTexCoord;
 
-    gl_Position = MVP * pos;
+	gl_Position = MVP * vec4(Position,1.0);
 }

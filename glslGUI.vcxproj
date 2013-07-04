@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="allInOneShapeDrawer.h" />
     <ClInclude Include="button.h" />
     <ClInclude Include="multiTexShapeDrawer.h" />
     <ClInclude Include="textdrawer.h" />
@@ -154,6 +155,7 @@
     <ClInclude Include="dynVertexTexShapeDrawer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="allInOneShapeDrawer.cpp" />
     <ClCompile Include="button.cpp" />
     <ClCompile Include="multiTexShapeDrawer.cpp" />
     <ClCompile Include="textdrawer.cpp" />
@@ -174,6 +176,8 @@
     <ClCompile Include="dynVertexTexShapeDrawer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="shader\allInOneTextureShader.fs" />
+    <None Include="shader\allInOneTextureShader.vs" />
     <None Include="shader\multiTextureShader.fs" />
     <None Include="shader\multiTextureShader.vs" />
     <None Include="shader\singleTextureShader.fs" />

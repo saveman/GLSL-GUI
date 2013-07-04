@@ -7,6 +7,8 @@
 #include "singleTexShapeDrawer.h"
 #include "multiTexShapeDrawer.h"
 #include "dynVertexTexShapeDrawer.h"
+#include "allInOneShapeDrawer.h"
+
 using glm::vec3;
 
 Button::Button(GLSLProgram* t_prog, Mouse* t_mouse, Keyboard* t_keyboard,
@@ -40,20 +42,22 @@ GuiBaseClass(t_prog, t_mouse, t_keyboard,  t_x, t_y, t_width, t_height,  t_onMou
 	renderButtonColor = (t_buttonColor != vec4(0.0)) ? t_buttonColor : vec4(0, 1, 0,1);
 	float w=(float)width/(float)WIN_WIDTH*2.0;
 	float h=(float)height/(float)WIN_HEIGHT*2.0;
-	if(drawMode==2)
-	{
-		drawer=new MultiTexShapeDrawer(t_prog, t_backgroundTextureFile, t_upperTextureFile, new VBOPlane(w, h, 10, 10) );
-		drawer->setTexStatus(true);
-	}
-	else if(drawMode==1)
+
+	if(drawMode==1)
 	{
 		drawer=new SingleTexShapeDrawer(t_prog, t_backgroundTextureFile, new VBOPlane(w, h, 10, 10));	
-		drawer->setTexStatus(true);
 	}
-	else
+	else if(drawMode==2)
+	{
+		drawer=new MultiTexShapeDrawer(t_prog, t_backgroundTextureFile, t_upperTextureFile, new VBOPlane(w, h, 10, 10) );
+	}
+	else if(drawMode<=19)
 	{
 		drawer=new DynVertexTexShapeDrawer(t_prog, drawMode, new VBOPlane(w, h, 10, 10));
-		drawer->setTexStatus(true);
+	}
+	else if(drawMode<=29)
+	{
+		drawer=new AllInOneShapeDrawer(t_prog, t_backgroundTextureFile, t_upperTextureFile, drawMode, new VBOPlane(w, h, 10, 10));
 	}
 
 	textProg = new GLSLProgram("shader/textShader");
@@ -71,13 +75,8 @@ Button::~Button()
 
 //define privatemember method to draw a button instance
 void Button::drawButton() {
-	if(drawMode==2 || drawMode==1)
-		drawer->setTexStatus(true);
-	else
-		drawer->setTexStatus(false);
 	drawer->render(vec3((float(x+0.5*width))/WIN_WIDTH*2.0-1.0, (float(y+0.5*height))/WIN_HEIGHT*2.0-1.0,0),rotation);
 	TextDrawer::GLSLDrawText(*textProg, (float(x+fontOffset.x))/WIN_WIDTH*2.0-1.0, (float(y+fontOffset.y))/WIN_HEIGHT*2.0-1.0, textColor, buttonText, fontSize); 
-	//TextDrawer::GLSLDrawText(*getGLSLProgram(), (float(x+fontOffset.x))/WIN_WIDTH*2.0-1.0, (float(y+fontOffset.y))/WIN_HEIGHT*2.0-1.0, textColor, buttonText, fontSize); 
 }
 
 //define private member method to update a button status

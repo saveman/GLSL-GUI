@@ -13,10 +13,10 @@ private:
 	int drawMode;
 	int modeMask;
 public:
-    DynVertexTexShapeDrawer(GLSLProgram* prog, int t_DrawMode,  Drawable* t_shape)  ;
+	DynVertexTexShapeDrawer(GLSLProgram* prog, int t_DrawMode,  Drawable* t_shape)  ;
 	~DynVertexTexShapeDrawer();
 	void initScene();
-    void render(vec3 translation, float rotation);
+	void render(vec3 translation, float rotation);
 };
 
 #endif // WAVETEXSHADER_H
